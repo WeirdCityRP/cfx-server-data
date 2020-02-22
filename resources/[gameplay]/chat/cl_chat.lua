@@ -101,21 +101,16 @@ RegisterNUICallback('chatResult', function(data, cb)
   chatInputActive = false
   SetNuiFocus(false)
 
-  if data.canceled then
-    return
-  end
+  if not data.canceled then
+    local id = PlayerId()
 
-  local registeredCommands = GetRegisteredCommands()
+    --deprecated
+    local r, g, b = 0, 0x99, 255
 
-  for _, command in ipairs(registeredCommands) do
-    if IsAceAllowed(('command.%s'):format(command.name)) then
-      if data.message:sub(1, 1) == '/' and data.message:sub(2) == command.name then
-          ExecuteCommand(data.message:sub(2))
-          break
-      else
-          TriggerEvent('chat:addMessage', { color = {255, 0, 0}, args = {"Invalid Command"} })
-          break
-      end
+    if data.message:sub(1, 1) == '/' then
+      ExecuteCommand(data.message:sub(2))
+    else
+      TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
     end
   end
 
