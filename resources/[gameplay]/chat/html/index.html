@@ -19,16 +19,19 @@
   <script type="text/x-template" id="app_template">
     <div id="app">
       <div class="chat-window" :style="this.style" :class="{ 'fadeOut animated': !showWindow, 'hidden': shouldHide }">
+        <!-- <div class="chat-messages round" ref="messages"> -->
         <div class="chat-messages" ref="messages">
-          <message v-for="msg in messages"
-                   :templates="templates"
-                   :multiline="msg.multiline"
-                   :args="msg.args"
-                   :color="msg.color"
-                   :template="msg.template"
-                   :template-id="msg.templateId"
-                   :key="msg">
-          </message>
+          <!-- <div class="talktext"> -->
+            <message v-for="msg in messages"
+                     :templates="templates"
+                     :multiline="msg.multiline"
+                     :args="msg.args"
+                     :color="msg.color"
+                     :template="msg.template"
+                     :template-id="msg.templateId"
+                     :key="msg">
+            </message>
+          <!-- </div> -->
         </div>
       </div>
       <div class="chat-input" v-show="showInput">
