@@ -1,0 +1,8 @@
+# Example
+set mysql_connection_string "
+	server=127.0.0.1;
+	uid=root;
+	password=12345678;
+	database=weirdcity
+"
+Further help can be found at https://github.com/WeirdCityRP/fivem-mysql-async#installation or https://github.com/mysqljs/mysql#connection-options
